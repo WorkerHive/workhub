@@ -10,9 +10,13 @@ WORKDIR /graph/workhub-graph
 
 ADD wait-for-it.sh .
 
+RUN git pull
+
 RUN yarn install
 
 RUN apk add bash
 
-CMD ./wait-for-it.sh mongo:27017 -- node index.js
+ADD run.sh .
+
+CMD ./wait-for-it.sh rabbit1:5672 -- ./run.sh
 
