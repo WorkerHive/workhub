@@ -23,10 +23,12 @@ services:
   graph:
     build: "./graph-layer"
     ports:
-      - "8080:4000"
+      - "80:80"
+      - "443:443"
     volumes:
       - "/root/efs:/data/cae"
       - "/root/efs/ipfs:/root/.jsipfs"
+      - "/root/efs/greenlock.d:/graph/workhub-graph/greenlock.d"
     environment:
       MONGO_URL: "mongodb://mongo"
       MONGO_DB: "workhub"
