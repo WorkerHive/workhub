@@ -14,17 +14,13 @@ RUN git pull
 
 RUN yarn install
 
-RUN apk add bash
-
-RUN git clone https://github.com/WorkerHive/React-WorkerHub workhub-web
+RUN apk add bash wget
 
 WORKDIR /graph/workhub-graph/workhub-web
 
-ENV REACT_APP_GRAPH_URL=/graphql
+RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/v0.1/build.tar
 
-RUN yarn install
-
-RUN yarn build
+RUN tar -xvf build.tar
 
 WORKDIR /graph/workhub-graph
 
