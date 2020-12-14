@@ -3,7 +3,7 @@ services:
   mongo:
     image: "mongo"
     volumes:
-      - "/home/ubuntu/efs/db:/data/db"
+      - "/root/efs/db:/data/db"
     ports:
       - "127.0.0.1:27017:27017"
   rabbit1:
@@ -14,6 +14,8 @@ services:
       RABBITMQ_DEFAULT_USER: "rabbitmq"
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
       RABBITMQ_DEFAULT_VHOST: "/"
+    volumes:
+      - "/root/efs/rabbitmq:/var/lib/rabbitmq"
     ports:
       - "127.0.0.1:15672:15672"
       - "127.0.0.1:5672:5672"
@@ -24,8 +26,8 @@ services:
     ports:
       - "8080:4000"
     volumes:
-      - "/home/ubuntu/efs:/data/cae"
-      - "/home/ubuntu/efs/ipfs:/root/.jsipfs"
+      - "/root/efs:/data/cae"
+      - "/root/efs/ipfs:/root/.jsipfs"
     environment:
       MONGO_URL: "mongodb://mongo"
       MONGO_DB: "workhub"
@@ -39,18 +41,18 @@ services:
       - rabbit1
       - mongo
     volumes:
-      - "/home/ubuntu/efs:/data/cae"
+      - "/root/efs:/data/cae"
   glb2glb:
     image: balbatross/cae-glb2glb
     depends_on:
       - rabbit1
       - mongo
     volumes:
-      - "/home/ubuntu/efs:/data/cae"
+      - "/root/efs:/data/cae"
   gltfpack:
     image: balbatross/cae-gltfpack
     depends_on:
       - rabbit1
       - mongo
     volumes:
-      - "/home/ubuntu/efs:/data/cae"
+      - "/root/efs:/data/cae"
