@@ -25,7 +25,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "1234:1234"
     volumes:
+      - "/root/efs/yjs:/data/yLevel"
       - "/root/efs:/data/cae"
       - "/root/efs/ipfs:/root/.jsipfs"
       - "/root/efs/greenlock.d:/graph/workhub-graph/greenlock.d"
@@ -35,11 +37,7 @@ services:
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
     depends_on:
       - mongo
-      - rabbit1
-  yjs:
-    build: "./y-websockets-server"
-    ports: 
-      - "1234:1234"
+      - rabbit1 
   stp2glb:
     image: balbatross/cae-stp2glb
     depends_on:
