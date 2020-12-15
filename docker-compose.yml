@@ -36,6 +36,10 @@ services:
     depends_on:
       - mongo
       - rabbit1
+  yjs:
+    build: "./y-websockets-server"
+    ports: 
+      - "1234:1234"
   stp2glb:
     image: balbatross/cae-stp2glb
     depends_on:
