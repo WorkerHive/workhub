@@ -20,6 +20,8 @@ WORKDIR /graph/workhub-graph/workhub-web
 
 RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/v0.0.3/build.tar
 
+# Do comments trigger rebuild?
+
 RUN tar -xvf build.tar
 
 WORKDIR /graph/workhub-graph
