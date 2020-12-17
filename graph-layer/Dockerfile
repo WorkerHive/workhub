@@ -7,10 +7,12 @@ WORKDIR /graph
 
 RUN git clone https://github.com/WorkerHive/workhub-graph
 
-WORKDIR /graph/workhub-graph
+WORKDIR /graph/workhub-graph/greenlock.d 
 
 ADD greenlock.config.json greenlock.template
 RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o greenlock.d/config.json
+
+WORKDIR /graph/workhub-graph
 
 ADD wait-for-it.sh .
 
