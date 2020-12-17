@@ -22,7 +22,7 @@ services:
       NAME: "rabbitmq1"
   graph:
     build:
-      context: .
+      context: ./graph-layer
       dockerfile: "./graph-layer/Dockerfile"
       args:
         - domain=$WORKHUB_FS
