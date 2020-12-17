@@ -23,7 +23,7 @@ services:
   graph:
     build:
       context: ./graph-layer
-      dockerfile: "./graph-layer/Dockerfile"
+      dockerfile: "Dockerfile"
       args:
         - domain=$WORKHUB_FS
     ports:
