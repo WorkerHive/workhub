@@ -25,7 +25,7 @@ services:
       context: ./graph-layer
       dockerfile: "Dockerfile"
       args:
-        - domain=$WORKHUB_FS
+        - domain=$WORKHUB_DOMAIN
     ports:
       - "80:80"
       - "443:443"
