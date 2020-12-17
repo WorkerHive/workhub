@@ -11,7 +11,7 @@ WORKDIR /graph/workhub-graph/greenlock.d
 
 ADD greenlock.config.json greenlock.template
 RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o config.json
-
+RUN cat config.json
 WORKDIR /graph/workhub-graph
 
 ADD wait-for-it.sh .
