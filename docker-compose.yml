@@ -39,28 +39,28 @@ services:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       MONGO_URL: "mongodb://mongo"
       MONGO_DB: "workhub"
-      MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit'
+      MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
     depends_on:
       - mongo
-      - rabbit 
+      - rabbit1
   stp2glb:
     image: balbatross/cae-stp2glb
     depends_on:
-      - rabbit
+      - rabbit1
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
   glb2glb:
     image: balbatross/cae-glb2glb
     depends_on:
-      - rabbit
+      - rabbit1
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
   gltfpack:
     image: balbatross/cae-gltfpack
     depends_on:
-      - rabbit
+      - rabbit1
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
