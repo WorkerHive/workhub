@@ -5,12 +5,12 @@ RUN apk add git python3 py3-pip alpine-sdk
 RUN apk add gomplate 
 WORKDIR /graph
 
-ADD greenlock.config.json greenlock.template
-RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o greenlock.d/config.json
-
 RUN git clone https://github.com/WorkerHive/workhub-graph
 
 WORKDIR /graph/workhub-graph
+
+ADD greenlock.config.json greenlock.template
+RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o greenlock.d/config.json
 
 ADD wait-for-it.sh .
 

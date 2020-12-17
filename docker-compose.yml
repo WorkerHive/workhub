@@ -31,6 +31,8 @@ services:
       - "${WORKHUB_FS}:/data/cae"
       - "${WORKHUB_FS}/ipfs:/root/.jsipfs"
       - "${WORKHUB_FS}/greenlock.d:/graph/workhub-graph/greenlock.d"
+    args:
+      - domain=$WORKHUB_FS
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       MONGO_URL: "mongodb://mongo"
