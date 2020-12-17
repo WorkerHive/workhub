@@ -6,7 +6,7 @@ services:
       - "${WORKHUB_FS}/db:/data/db"
     ports:
       - "127.0.0.1:27017:27017"
-  rabbit:
+  rabbit1:
     image: "rabbitmq:3-management"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
