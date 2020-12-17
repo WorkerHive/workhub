@@ -1,5 +1,8 @@
 FROM node:15.4.0-alpine3.11
 
+ARG domain
+ENV WORKHUB_DOMAIN $domain
+
 RUN apk add git python3 py3-pip alpine-sdk 
 
 RUN apk add gomplate 
@@ -10,7 +13,7 @@ RUN git clone https://github.com/WorkerHive/workhub-graph
 WORKDIR /graph/workhub-graph/greenlock.d 
 
 ADD greenlock.config.json greenlock.template
-RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o config.json
+RUN gomplate -f greenlock.template -o config.json
 RUN cat config.json
 WORKDIR /graph/workhub-graph
 
