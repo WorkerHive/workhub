@@ -24,9 +24,7 @@ RUN apk add bash wget
 
 WORKDIR /graph/workhub-graph/workhub-web
 
-ADD build.tar build.tar
-
-RUN tar -xvf build.tar
+ADD build/ .
 
 WORKDIR /graph/workhub-graph
 
