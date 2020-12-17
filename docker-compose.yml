@@ -3,7 +3,7 @@ services:
   mongo:
     image: "mongo"
     volumes:
-      - "/root/efs/db:/data/db"
+      - "${WORKHUB_FS}/db:/data/db"
     ports:
       - "127.0.0.1:27017:27017"
   rabbit1:
@@ -14,7 +14,7 @@ services:
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
       RABBITMQ_DEFAULT_VHOST: "/"
     volumes:
-      - "/root/efs/rabbitmq:/var/lib/rabbitmq"
+      - "${WORKHUB_FS}/rabbitmq:/var/lib/rabbitmq"
     ports:
       - "127.0.0.1:15672:15672"
       - "127.0.0.1:5672:5672"
@@ -27,11 +27,12 @@ services:
       - "443:443"
       - "1234:1234"
     volumes:
-      - "/root/efs/yjs:/data/yLevel"
-      - "/root/efs:/data/cae"
-      - "/root/efs/ipfs:/root/.jsipfs"
-      - "/root/efs/greenlock.d:/graph/workhub-graph/greenlock.d"
+      - "${WORKHUB_FS}/yjs:/data/yLevel"
+      - "${WORKHUB_FS}:/data/cae"
+      - "${WORKHUB_FS}/ipfs:/root/.jsipfs"
+      - "${WORKHUB_FS}/greenlock.d:/graph/workhub-graph/greenlock.d"
     environment:
+      WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       MONGO_URL: "mongodb://mongo"
       MONGO_DB: "workhub"
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
@@ -44,18 +45,18 @@ services:
       - rabbit1
       - mongo
     volumes:
-      - "/root/efs:/data/cae"
+      - "${WORKHUB_FS}:/data/cae"
   glb2glb:
     image: balbatross/cae-glb2glb
     depends_on:
       - rabbit1
       - mongo
     volumes:
-      - "/root/efs:/data/cae"
+      - "${WORKHUB_FS}:/data/cae"
   gltfpack:
     image: balbatross/cae-gltfpack
     depends_on:
       - rabbit1
       - mongo
     volumes:
-      - "/root/efs:/data/cae"
+      - "${WORKHUB_FS}:/data/cae"

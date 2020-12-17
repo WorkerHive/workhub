@@ -2,7 +2,11 @@ FROM node:15.4.0-alpine3.11
 
 RUN apk add git python3 py3-pip alpine-sdk 
 
+RUN apk add gomplate 
 WORKDIR /graph
+
+ADD greenlock.config.json greenlock.template
+RUN WORKHUB_DOMAIN=$domain gomplate -f greenlock.template -o greenlock.d/config.json
 
 RUN git clone https://github.com/WorkerHive/workhub-graph
 
@@ -19,8 +23,6 @@ RUN apk add bash wget
 WORKDIR /graph/workhub-graph/workhub-web
 
 RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/v0.0.3/build.tar
-
-# Do comments trigger rebuild?
 
 RUN tar -xvf build.tar
 

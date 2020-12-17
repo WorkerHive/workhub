@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "store": {
+      "module": "greenlock-store-fs"
+    },
+    "challenges": {
+      "http-01": {
+        "module": "acme-http-01-standalone"
+      }
+    },
+    "renewOffset": "-45d",
+    "renewStagger": "3d",
+    "accountKeyType": "EC-P256",
+    "serverKeyType": "RSA-2048",
+    "subscriberEmail": "professional.balbatross@gmail.com"
+  },
+  "sites": [
+    {
+      "subject": "{{ .Env.WORKHUB_DOMAIN }}",
+      "altnames": [
+        "{{ .Env.WORKHUB_DOMAIN }}"
+      ]
+    }
+  ]
+}
