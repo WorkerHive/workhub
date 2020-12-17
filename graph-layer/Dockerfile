@@ -25,7 +25,7 @@ RUN yarn install
 
 RUN apk add bash wget
 
-WORKDIR /graph/workhub-graph/workhub-web
+WORKDIR /graph/workhub-graph/workhub-web/build
 
 ADD build/ .
 
