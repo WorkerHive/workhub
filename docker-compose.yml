@@ -6,7 +6,7 @@ services:
       - "${WORKHUB_FS}/db:/data/db"
     ports:
       - "127.0.0.1:27017:27017"
-  rabbit1:
+  rabbit:
     image: "rabbitmq:3-management"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
@@ -19,7 +19,7 @@ services:
       - "127.0.0.1:15672:15672"
       - "127.0.0.1:5672:5672"
     labels:
-      NAME: "rabbitmq1"
+      NAME: "rabbitmq"
   graph:
     build:
       context: ./graph-layer
@@ -39,28 +39,28 @@ services:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       MONGO_URL: "mongodb://mongo"
       MONGO_DB: "workhub"
-      MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
+      MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit'
     depends_on:
       - mongo
-      - rabbit1 
+      - rabbit 
   stp2glb:
     image: balbatross/cae-stp2glb
     depends_on:
-      - rabbit1
+      - rabbit
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
   glb2glb:
     image: balbatross/cae-glb2glb
     depends_on:
-      - rabbit1
+      - rabbit
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
   gltfpack:
     image: balbatross/cae-gltfpack
     depends_on:
-      - rabbit1
+      - rabbit
       - mongo
     volumes:
       - "${WORKHUB_FS}:/data/cae"
