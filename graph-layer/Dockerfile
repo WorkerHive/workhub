@@ -24,7 +24,7 @@ RUN apk add bash wget
 
 WORKDIR /graph/workhub-graph/workhub-web
 
-RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/v0.0.3/build.tar
+ADD build.tar .
 
 RUN tar -xvf build.tar
 
