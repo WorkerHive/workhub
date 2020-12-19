@@ -1,14 +1,14 @@
-FROM node:14-alpine3.12
+FROM node:14
 
 ARG domain
 ENV WORKHUB_DOMAIN $domain
 
-RUN apk add git python3 py3-pip alpine-sdk 
+RUN apt-get install -y wget git python3 python3-pip build-essential 
 
-RUN apk add libc6-compat
-RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
+#RUN apk add libc6-compat
+#RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 
-RUN apk add gomplate 
+RUN apt-get install -y gomplate 
 WORKDIR /graph
 
 RUN git clone https://github.com/WorkerHive/workhub-graph
@@ -24,8 +24,6 @@ ADD wait-for-it.sh .
 RUN git pull
 
 RUN yarn install
-
-RUN apk add bash wget
 
 WORKDIR /graph/workhub-graph/workhub-web/build
 
