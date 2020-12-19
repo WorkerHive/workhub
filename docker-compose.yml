@@ -30,6 +30,9 @@ services:
       - "80:80"
       - "443:443"
       - "1234:1234"
+      - "4001:4001"
+      - "4002:4002"
+      - "4003:4003"
     volumes:
       - "${WORKHUB_FS}/yjs:/data/yLevel"
       - "${WORKHUB_FS}:/data/cae"
@@ -43,24 +46,3 @@ services:
     depends_on:
       - mongo
       - rabbit1
-  stp2glb:
-    image: balbatross/cae-stp2glb
-    depends_on:
-      - rabbit1
-      - mongo
-    volumes:
-      - "${WORKHUB_FS}:/data/cae"
-  glb2glb:
-    image: balbatross/cae-glb2glb
-    depends_on:
-      - rabbit1
-      - mongo
-    volumes:
-      - "${WORKHUB_FS}:/data/cae"
-  gltfpack:
-    image: balbatross/cae-gltfpack
-    depends_on:
-      - rabbit1
-      - mongo
-    volumes:
-      - "${WORKHUB_FS}:/data/cae"
