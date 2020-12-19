@@ -5,6 +5,9 @@ ENV WORKHUB_DOMAIN $domain
 
 RUN apk add git python3 py3-pip alpine-sdk 
 
+RUN apk add libc6-compat
+RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
+
 RUN apk add gomplate 
 WORKDIR /graph
 
