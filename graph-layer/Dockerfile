@@ -1,4 +1,4 @@
-FROM node:14.0.0-alpine3.10
+FROM node:14-alpine3.12
 
 ARG domain
 ENV WORKHUB_DOMAIN $domain
