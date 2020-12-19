@@ -8,7 +8,9 @@ RUN apt-get install -y wget git python3
 #RUN apk add libc6-compat
 #RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 
-RUN apt-get install -y gomplate 
+COPY --from=hairyhenderson/gomplate:v3.8.0 /gomplate /bin/gomplate
+
+#RUN apt-get install -y gomplate 
 WORKDIR /graph
 
 RUN git clone https://github.com/WorkerHive/workhub-graph
