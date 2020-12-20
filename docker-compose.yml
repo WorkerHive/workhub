@@ -36,7 +36,7 @@ services:
     volumes:
       - "${WORKHUB_FS}/yjs:/data/yLevel"
       - "${WORKHUB_FS}:/data/cae"
-      - "${WORKHUB_FS}/ipfs:/root/.jsipfs"
+      - "${WORKHUB_FS}/ipfs:/graph/workhub-graph/workhub"
       - "${WORKHUB_FS}/greenlock.d:/graph/workhub-graph/greenlock.d"
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
