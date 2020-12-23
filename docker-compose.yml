@@ -44,6 +44,7 @@ services:
       dockerfile: "Dockerfile"
       args:
         - domain=$WORKHUB_DOMAIN
+        - WEBUI_VERSION=$WEBUI_VERSION
     ports:
       - "80:80"
       - "443:443"

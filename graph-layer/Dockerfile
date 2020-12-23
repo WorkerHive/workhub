@@ -1,6 +1,8 @@
 FROM node:14
 
 ARG domain
+ARG WEBUI_VERSION
+
 ENV WORKHUB_DOMAIN $domain
 
 RUN apt-get install -y wget git python3 
