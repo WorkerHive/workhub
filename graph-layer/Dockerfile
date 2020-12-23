@@ -29,7 +29,7 @@ RUN yarn install
 
 WORKDIR /graph/workhub-graph/workhub-web
 
-RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/refs%2Fheads%2Fmaster/webui.zip
+RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/$WEBUI_VERSION/webui.zip
 
 RUN unzip webui.zip
 
