@@ -23,9 +23,9 @@ services:
   load-balancer:
     image: nginx
     volumes:
-      - "${WORKHUB_FS}/greenlock.d/${WORKHUB_DOMAIN}/cert.pem:/etc/nginx/cert.pem"
-      - "${WORKHUB_FS}/greenlock.d/${WORKHUB_DOMAIN}/privkey.pem:/etc/nginx/privkey.pem"
-      - "${WORKHUB_FS}/greenlock.d/${WORKHUB_DOMAIN}/fullchain.pem:/etc/nginx/fullchain.pem"
+      - "${WORKHUB_FS}/greenlock.d/live/${WORKHUB_DOMAIN}/cert.pem:/etc/nginx/cert.pem"
+      - "${WORKHUB_FS}/greenlock.d/live/${WORKHUB_DOMAIN}/privkey.pem:/etc/nginx/privkey.pem"
+      - "${WORKHUB_FS}/greenlock.d/live/${WORKHUB_DOMAIN}/fullchain.pem:/etc/nginx/fullchain.pem"
       - "./nginx-conf/nginx.conf:/etc/nginx/nginx.conf:ro"
     command: [nginx-debug, '-g', 'daemon off;']
     expose:
