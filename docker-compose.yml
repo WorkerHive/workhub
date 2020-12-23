@@ -48,5 +48,6 @@ services:
       MONGO_DB: "workhub"
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
     depends_on:
+      - signal
       - mongo
       - rabbit1
