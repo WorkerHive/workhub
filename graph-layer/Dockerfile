@@ -27,9 +27,11 @@ RUN git pull
 
 RUN yarn install
 
-WORKDIR /graph/workhub-graph/workhub-web/build
+WORKDIR /graph/workhub-graph/workhub-web
 
-ADD build/ .
+RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/refs%2Fheads%2Fmaster/webui.zip
+
+RUN unzip webui.zip
 
 WORKDIR /graph/workhub-graph
 
