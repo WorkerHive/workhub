@@ -20,6 +20,10 @@ services:
       - "127.0.0.1:5672:5672"
     labels:
       NAME: "rabbitmq"
+  signal:
+    build: "./signal-server"
+    ports: 
+      - "6969:6969"
   graph:
     build:
       context: ./graph-layer
