@@ -53,6 +53,7 @@ services:
       - "4002:4002"
       - "4003:4003"
     volumes:
+      - "${WORKHUB_FS}/config:/data/workhub.conf"
       - "${WORKHUB_FS}/yjs:/data/yLevel"
       - "${WORKHUB_FS}:/data/cae"
       - "${WORKHUB_FS}/ipfs:/graph/workhub-graph/workhub"
