@@ -4,4 +4,5 @@ RUN npm i -g y-leveldb y-websocket yjs
 
 EXPOSE 1234
 
-CMD ["YPERSISTENCE=/data/ydir", "y-websocket-server"]
+ENV YPERSISTENCE "/data/ydir"
+CMD ["y-websocket-server"]
