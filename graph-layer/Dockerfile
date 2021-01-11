@@ -15,7 +15,7 @@ COPY --from=hairyhenderson/gomplate:v3.8.0 /gomplate /bin/gomplate
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN git clone https://github.com/WorkerHive/workhub-server
+RUN git clone https://github.com/WorkerHive/workhub-server workhub-graph
 
 
 
