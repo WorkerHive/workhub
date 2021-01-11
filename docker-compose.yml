@@ -28,6 +28,8 @@ services:
       - "${WORKHUB_FS}/greenlock.d/live/${WORKHUB_DOMAIN}/fullchain.pem:/etc/nginx/fullchain.pem"
       - "./nginx-conf/nginx.conf:/etc/nginx/nginx.conf:ro"
     command: [nginx-debug, '-g', 'daemon off;']
+    volumes:
+      - "${WORKHUB_FS}/web-ui:/www/data"
     expose:
       - "80"
     ports: 
