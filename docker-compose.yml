@@ -42,6 +42,12 @@ services:
     build: "./signal-server"
     expose:
       - "6969"
+  yjs:
+    build: "./y-websockets-server"
+    volumes:
+      - "${WORKHUB_FS}/yjs:/data/ydir"
+    expose: 
+      - "1234"
   graph:
     build:
       context: ./graph-layer
@@ -57,7 +63,6 @@ services:
       - "4003:4003"
     volumes:
       - "${WORKHUB_FS}/workhub:/data/workhub"
-      - "${WORKHUB_FS}/yjs:/data/yLevel"
       - "${WORKHUB_FS}:/data/cae"
       - "${WORKHUB_FS}/ipfs:/graph/workhub-graph/workhub"
       - "${WORKHUB_FS}/greenlock.d:/graph/workhub-graph/greenlock.d"
