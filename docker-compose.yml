@@ -44,6 +44,7 @@ services:
       - "6969"
   yjs:
     build: "./y-websockets-server"
+    command: ["YPERSISTENCE=/data/ydir", "y-websocket-server"]
     volumes:
       - "${WORKHUB_FS}/yjs:/data/ydir"
     expose: 
