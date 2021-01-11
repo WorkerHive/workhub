@@ -33,6 +33,7 @@ services:
     ports: 
       - "6969:80"
     depends_on:
+      - graph
       - signal
   signal:
     build: "./signal-server"
@@ -45,12 +46,13 @@ services:
       args:
         - domain=$WORKHUB_DOMAIN
         - WEBUI_VERSION=$WEBUI_VERSION
+    expose:
+      - "4002"
     ports:
       - "80:80"
       - "443:443"
       - "1234:1234"
       - "4001:4001"
-      - "4002:4002"
       - "4003:4003"
     volumes:
       - "${WORKHUB_FS}/workhub:/data/workhub"
