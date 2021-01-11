@@ -32,8 +32,10 @@ services:
       - "${WORKHUB_FS}/web-ui:/www/data"
     expose:
       - "80"
+      - "443"
     ports: 
-      - "6969:80"
+      - "80:80"
+      - "443:443"
     depends_on:
       - graph
       - signal
@@ -51,8 +53,6 @@ services:
     expose:
       - "4002"
     ports:
-      - "80:80"
-      - "443:443"
       - "1234:1234"
       - "4001:4001"
       - "4003:4003"
