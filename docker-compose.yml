@@ -39,7 +39,9 @@ services:
       - graph
       - signal
   signal:
-    build: "./signal-server"
+    image: libp2p/js-libp2p-webrtc-star
+    environment:
+      - VIRTUAL_PORT=6969
     expose:
       - "6969"
   yjs:
