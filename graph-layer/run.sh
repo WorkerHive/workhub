@@ -3,4 +3,4 @@ if [ ! -f "$FILE" ]; then
   mkdir ./greenlock.d
   gomplate -f greenlock.template -o ./greenlock.d/config.json
 fi
-git reset --hard HEAD && git pull && yarn install && npx ts-node src/index.ts
+git reset --hard HEAD && git pull && yarn install && yarn start
