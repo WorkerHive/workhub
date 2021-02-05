@@ -32,6 +32,10 @@ RUN yarn build:server-deps
 
 RUN yarn install --force
 
+RUN yarn build:flow
+
+RUN yarn install --force
+
 ADD run.sh .
 
 CMD ./wait-for-it.sh rabbit1:5672 -- ./run.sh
