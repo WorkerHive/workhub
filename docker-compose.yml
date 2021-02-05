@@ -77,5 +77,5 @@ services:
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
     depends_on:
       - signal
-      - mongo
+      - queendb
       - rabbit1
