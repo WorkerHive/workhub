@@ -39,7 +39,7 @@ services:
       - graph
       - signal
   signal:
-    image: libp2p/js-libp2p-webrtc-star
+    build: "./signal-server"
     environment:
       - VIRTUAL_PORT=6969
     expose:
@@ -66,8 +66,8 @@ services:
     volumes:
       - "${WORKHUB_FS}/workhub:/data/workhub"
       - "${WORKHUB_FS}:/data/cae"
-      - "${WORKHUB_FS}/ipfs:/graph/workhub-graph/workhub"
-      - "${WORKHUB_FS}/greenlock.d:/graph/workhub-graph/greenlock.d"
+      - "${WORKHUB_FS}/ipfs:/graph/workhub/packages/server/workhub"
+      - "${WORKHUB_FS}/greenlock.d:/graph/workhub/greenlock.d"
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       MONGO_URL: "mongodb://mongo"
