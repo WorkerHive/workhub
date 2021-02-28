@@ -15,11 +15,10 @@ COPY --from=hairyhenderson/gomplate:v3.8.0 /gomplate /bin/gomplate
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN git clone https://github.com/WorkerHive/workhub-server workhub-graph
+RUN git clone https://github.com/WorkerHive/hub workhub
 
 
-
-WORKDIR /graph/workhub-graph
+WORKDIR /graph/workhub
 
 ADD greenlock.config.json greenlock.template
 
@@ -29,13 +28,13 @@ RUN git pull
 
 RUN yarn install
 
-WORKDIR /graph/workhub-graph/workhub-web
+RUN yarn build:server-deps
 
-RUN wget https://github.com/WorkerHive/React-WorkerHub/releases/download/$WEBUI_VERSION/webui.zip
+RUN yarn install --force
 
-RUN unzip webui.zip
+RUN yarn build:flow
 
-WORKDIR /graph/workhub-graph
+RUN yarn install --force
 
 ADD run.sh .
 
