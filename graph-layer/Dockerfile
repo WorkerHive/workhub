@@ -28,13 +28,7 @@ RUN git pull
 
 RUN yarn install
 
-RUN yarn build:server-deps
-
-RUN yarn install --force
-
-RUN yarn build:flow
-
-RUN yarn install --force
+RUN npx lerna bootstrap --scope workhub-server --include-dependencies
 
 ADD run.sh .
 
