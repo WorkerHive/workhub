@@ -26,7 +26,7 @@ ADD wait-for-it.sh .
 
 RUN git pull
 
-RUN yarn install
+RUN npm install
 
 RUN npx lerna bootstrap --scope workhub-server --include-dependencies
 
