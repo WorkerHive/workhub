@@ -1,11 +1,14 @@
 version: "3.3"
 services:
-  mongo:
-    image: "mongo"
+  queendb:
+    image: "balbatross/queendb"
     volumes:
       - "${WORKHUB_FS}/db:/data/db"
+      - "${WORKHUB_FS}/queendb:/var/lib/postgresql/data"
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "defaultpassword" 
   rabbit1:
     image: "rabbitmq:3-management"
     environment:
@@ -70,10 +73,9 @@ services:
       - "${WORKHUB_FS}/greenlock.d:/graph/workhub/greenlock.d"
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
-      MONGO_URL: "mongodb://mongo"
-      MONGO_DB: "workhub"
+      QUEENDB_HOST: "queendb"
+      QUEENDB_PASS: "defaultpassword"
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
     depends_on:
       - signal
-      - mongo
       - rabbit1
