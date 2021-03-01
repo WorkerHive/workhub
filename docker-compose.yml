@@ -1,12 +1,12 @@
 version: "3.3"
 services:
   mail: 
-    image: "bytemark/smtp"
+    build: './mail' 
     restart: always
     environment: 
       MAILNAME: "${WORKHUB_DOMAIN}"
     ports: 
-      - "25:25"
+      - "587:587"
   queendb:
     image: "balbatross/queendb"
     volumes:
