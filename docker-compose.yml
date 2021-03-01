@@ -80,6 +80,10 @@ services:
       - "${WORKHUB_FS}/greenlock.d:/graph/workhub/greenlock.d"
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
+      SMTP_SERVER: "${SMTP_SERVER}"
+      SMTP_USER: "${SMTP_USER}"
+      SMTP_PASS: "${SMTP_PASS}"
+      SMTP_PORT: "${SMTP_PORT}"
       QUEENDB_HOST: "queendb"
       QUEENDB_PASS: "defaultpassword"
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
