@@ -5,6 +5,8 @@ services:
     restart: always
     environment: 
       MAILNAME: "${WORKHUB_DOMAIN}"
+    ports: 
+      - "25:25"
   queendb:
     image: "balbatross/queendb"
     volumes:
