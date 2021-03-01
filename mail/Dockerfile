@@ -10,9 +10,7 @@
 # DOCKER-VERSION    0.5.3
 
 # See http://phusion.github.io/baseimage-docker/
-FROM phusion/baseimage:latest
-
-MAINTAINER Justin Plock <jplock@gmail.com>
+FROM phusion/baseimage:latest-amd64
 
 ENV HOME /root
 
