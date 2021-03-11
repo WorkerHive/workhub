@@ -11,7 +11,7 @@ RUN apk add bash
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN npm i --global --unsafe-perm @workerhive/server@2.1.19
+RUN npm i --global --unsafe-perm @workerhive/server@2.1.20
 
 ADD wait-for-it.sh .
 
