@@ -12,10 +12,7 @@ RUN apt-get install -y wget git python3
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN chown -R root /usr/local/lib/node_modules
-RUN chmod -R 777 /usr/local/lib/node_modules
-
-RUN npm i -g @workerhive/server
+RUN npm i --global --unsafe-perm @workerhive/server
 
 ADD wait-for-it.sh .
 
