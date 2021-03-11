@@ -9,10 +9,10 @@ RUN apt-get install -y wget git python3
 #RUN apk add libc6-compat
 #RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 
+USER node
 
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
-RUN whoami
 
 RUN npm i -g @workerhive/server
 
