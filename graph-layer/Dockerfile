@@ -12,6 +12,7 @@ RUN apt-get install -y wget git python3
 
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
+RUN whoami
 
 RUN npm i -g @workerhive/server
 
