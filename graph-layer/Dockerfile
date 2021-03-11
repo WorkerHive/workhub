@@ -11,7 +11,7 @@ RUN apk add bash python3 alpine-sdk
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN npm i --global --unsafe-perm @workerhive/server@2.1.21
+RUN npm i --global --unsafe-perm @workerhive/server@2.1.22
 
 ADD wait-for-it.sh .
 
