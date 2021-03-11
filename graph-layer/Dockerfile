@@ -14,6 +14,8 @@ USER node
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
+RUN chown -R node /usr/local/lib/node_modules
+
 RUN npm i -g @workerhive/server
 
 ADD wait-for-it.sh .
