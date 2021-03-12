@@ -84,6 +84,7 @@ services:
       SMTP_USER: "${SMTP_USER}"
       SMTP_PASS: "${SMTP_PASS}"
       SMTP_PORT: "${SMTP_PORT}"
+      SMTP_FROM: "${SMTP_FROM}"
       QUEENDB_HOST: "queendb"
       QUEENDB_PASS: "defaultpassword"
       MQ_URL: 'amqp://rabbitmq:rabbitmq@rabbit1'
