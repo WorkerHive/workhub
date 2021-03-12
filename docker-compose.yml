@@ -69,8 +69,7 @@ services:
     volumes:
       - "${WORKHUB_FS}/workhub:/data/workhub"
       - "${WORKHUB_FS}:/data/cae"
-      - "${WORKHUB_FS}/ipfs:/graph/workhub/packages/server/workhub"
-      - "${WORKHUB_FS}/greenlock.d:/graph/workhub/greenlock.d"
+      - "${WORKHUB_FS}/ipfs:/graph/workhub"
     environment:
       WORKHUB_DOMAIN: "${WORKHUB_DOMAIN}"
       SMTP_SERVER: "${SMTP_SERVER}"
