@@ -29,7 +29,7 @@ services:
       - "127.0.0.1:5672:5672"
     labels:
       NAME: "rabbitmq"
-  load-balancer:
+  nginx:
     image: nginx
     volumes:
       - "${WORKHUB_FS}/certbot/conf:/etc/letsencrypt"
