@@ -45,6 +45,10 @@ services:
     ports: 
       - "80:80"
       - "443:443"
+    depends_on:
+      - signal
+      - graph
+      - yjs
   signal:
     build: "./signal-server"
     environment:
