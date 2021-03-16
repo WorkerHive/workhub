@@ -12,7 +12,7 @@ RUN apt-get install python3 -y
 #RUN apt-get install -y gomplate 
 WORKDIR /graph
 
-RUN npm i --global --unsafe-perm @workerhive/server@2.1.41
+RUN npm i --global --unsafe-perm @workerhive/server@2.1.42
 
 ADD wait-for-it.sh .
 
