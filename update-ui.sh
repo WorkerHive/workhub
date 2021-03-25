@@ -12,6 +12,5 @@ wget https://github.com/WorkerHive/hub/releases/download/$WEBUI_VERSION/webui.zi
 rm -rf web-ui/*
 rm -rf packages/
 unzip webui.zip 'packages/web-ui/build/*'
-mkdir web-ui
 mv packages/web-ui/build/* web-ui
 rm -rf packages/
